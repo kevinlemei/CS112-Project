@@ -17,6 +17,7 @@ public class GameCell extends JPanel {
     setBackground(Color.YELLOW);
   }
   
+///////a class function to clear the cell///////
   public void clear() {
     content = Chip.BLANK;
   }
@@ -24,7 +25,8 @@ public class GameCell extends JPanel {
   class MyMouseListener extends MouseAdapter {
     
   }
-  
+
+/////////the graphics of the cell//////
   public void paintComponent(Graphics g) {
     super.paintComponent(g);
     
@@ -33,19 +35,32 @@ public class GameCell extends JPanel {
     int width = getSize().width - 30;
     int height = getSize().height - 30;
     
-    if (isEnabled()) {
-      g.setColor(chipColor);
+    if (content == Chip.BLANK) {
+      g.setcolor(getBackground());
+    }
+    else if (content == Chip.RED) {
+      g.setColor(Color.RED);
+      g.fillOval(x, y, width, height);
+    }
+    else if (content == Chip.BLACK) {
+      g.setColor(Color.BLACK);
       g.fillOval(x, y, width, height);
     }
     
-    else {
-      g.setColor (Color.DARK_GRAY);
-      g.fillOval(x, y, width, height);
-      
-      g.setColor (getBackground());
-      g.fillOval(x+1, y+1, width-2, height-2);
-    }
-  }
+    
+//    if (isEnabled()) {
+//      g.setColor(chipColor);
+//      g.fillOval(x, y, width, height);
+//    }
+//    
+//    else {
+//      g.setColor (Color.DARK_GRAY);
+//      g.fillOval(x, y, width, height);
+//      
+//      g.setColor (getBackground());
+//      g.fillOval(x+1, y+1, width-2, height-2);
+//    }
+//  }
   
   
 }
