@@ -28,11 +28,8 @@ public class GameCell extends JPanel {
   public void paintComponent(Graphics g) {
     super.paintComponent(g);
     
-    // the coordinates of the upper left corner of a rectangle
-    // in which an oval will be inscribed
-    
-    int x = 20;  // x increases to the right
-    int y = 20;  // y increases going down
+    int x = 20;
+    int y = 20;
     int width = getSize().width - 30;
     int height = getSize().height - 30;
     
@@ -40,6 +37,7 @@ public class GameCell extends JPanel {
       g.setColor(chipColor);
       g.fillOval(x, y, width, height);
     }
+    
     else {
       g.setColor (Color.DARK_GRAY);
       g.fillOval(x, y, width, height);
