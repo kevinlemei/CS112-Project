@@ -25,10 +25,17 @@ class GameCell extends Connect4Cell {
   // the coordinates of the upper left corner of a rectangle
   // in which an oval will be inscribed
 
+<<<<<<< HEAD
   int x = 20;  // x increases to the right
   int y = 30;  // y increases going down
   int width = getSize().width - 40;
   int height = getSize().height - 60;
+=======
+		int x = 20;  // x increases to the right
+		int y = 30;  // y increases going down
+		int width = getSize().width - 30;
+		int height = getSize().height - 30;
+>>>>>>> FETCH_HEAD
 
   if (isEnabled()) {
    g.setColor(Color.YELLOW);
