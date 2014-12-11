@@ -5,7 +5,7 @@ import javax.swing.border.*;
 
 class GameCell extends Connect4Cell {
   
-  Color chipColor = Color.YELLOW;
+  public Color chipColor = Color.YELLOW;
   GameCell(int size) {
     super(size);
     addMouseListener(new MouseAdapter() {
