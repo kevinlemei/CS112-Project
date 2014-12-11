@@ -1,8 +1,6 @@
 import javax.swing.*;
-
 import java.awt.*;
 import java.awt.event.*;
-
 import javax.swing.border.*;
 
 class Connect4Board extends JPanel {
@@ -19,7 +17,7 @@ class Connect4Board extends JPanel {
   GameCell gameCell;
   
   class MyMouseListener extends MouseAdapter {
-	    
+     
   }
   
   Connect4Board(Component f) {
@@ -31,12 +29,14 @@ class Connect4Board extends JPanel {
     //  add(new GameCell(CELL_SIZE));
     
     GameCell[][] gameBoard = new GameCell[6][7];
+    
     for (int boardRow = 0; boardRow<ROWS; boardRow++){
-    	for (int boardCol = 0; boardCol<COLUMNS; boardCol++){
-    		gameBoard[boardRow][boardCol] = new GameCell (boardRow, boardCol, CELL_SIZE);
-    		//gameBoard[boardCol][boardRow] = new GameCell (boardCol, boardRow, CELL_SIZE);
-    	}
+     for (int boardCol = 0; boardCol<COLUMNS; boardCol++){
+      gameBoard[boardRow][boardCol] = new GameCell (boardRow, boardCol);
+      //gameBoard[boardCol][boardRow] = new GameCell (boardCol, boardRow, CELL_SIZE);
+     }
     }
+    
     setEnabled(false);  
     addMouseListener(new MouseAdapter() {
         public void mouseClicked(MouseEvent e){
