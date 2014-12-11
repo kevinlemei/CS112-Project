@@ -6,14 +6,14 @@ import javax.swing.border.*;
 public class GameCell extends JPanel {
   
   public Color chipColor = Color.YELLOW;
-  int col, row;
+  public int col, row;
   Chip content;
   
 /////////////constructor//////////////
   public GameCell(int col, int row) {
     this.col = col;
     this.row = row;
-    setPreferredSize (new Dimension(size,size));
+    setPreferredSize (new Dimension(int size,size));
     setBackground(Color.YELLOW);
   }
   
