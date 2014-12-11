@@ -7,19 +7,24 @@ import javax.swing.border.*;
 
 class GameCell extends Connect4Cell {
 	
+	Color chipColor = Color.YELLOW;
 	
 	GameCell(int size) {
 		super(size);
-		//addMouseListener(new MouseAdapter(){
-		//	public void mousePressed(MouseEvent e){
-		//		repaint();
-		//	}
-	//	});
+		addMouseListener(new MouseAdapter(){
+			public void mouseClicked(MouseEvent e){
+				if (e.getClickCount()%2!=0)
+					chipColor = Color.RED;
+				else
+					chipColor = Color.BLACK;
+				repaint();
+			}
+		});
 	}
 	
-//	class MyMouseListener extends MouseAdapter {
+	class MyMouseListener extends MouseAdapter {
 		
-	//}
+	}
 		
 	
 	public void paintComponent(Graphics g) {
@@ -29,12 +34,12 @@ class GameCell extends Connect4Cell {
 		// in which an oval will be inscribed
 
 		int x = 20;  // x increases to the right
-		int y = 30;  // y increases going down
+		int y = 20;  // y increases going down
 		int width = getSize().width - 30;
 		int height = getSize().height - 30;
 
 		if (isEnabled()) {
-			g.setColor(Color.YELLOW);
+			g.setColor(chipColor);
 			g.fillOval(x, y, width, height);
 		}
 		else {
