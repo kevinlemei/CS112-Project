@@ -3,9 +3,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.border.*;
 
-public enum Chip {BLANK, RED, BLACK}
-
-public class GameCell {
+public class GameCell extends JPanel {
   
   public Color chipColor = Color.YELLOW;
   int col, row;

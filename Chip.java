@@ -1,0 +1,1 @@
+public enum Chip {BLANK, RED, BLACK}
