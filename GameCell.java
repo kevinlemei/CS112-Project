@@ -3,20 +3,24 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.border.*;
 
-class GameCell extends Connect4Cell {
+public enum Chip {BLANK, RED, BLACK}
+
+public class GameCell {
   
   public Color chipColor = Color.YELLOW;
-  GameCell(int size) {
-    super(size);
-    /*addMouseListener(new MouseAdapter() {
-      public void mouseClicked(MouseEvent e){
-        if (e.getClickCount()%2 != 0)
-          chipColor = Color.RED;
-        else
-          chipColor = Color.BLACK;
-        repaint();
-      }
-    });*/
+  int col, row;
+  Chip content;
+  
+/////////////constructor//////////////
+  public GameCell(int col, int row) {
+    this.col = col;
+    this.row = row;
+    setPreferredSize (new Dimension(size,size));
+    setBackground(Color.YELLOW);
+  }
+  
+  public void clear() {
+    content = Chip.BLANK;
   }
   
   class MyMouseListener extends MouseAdapter {
@@ -46,4 +50,6 @@ class GameCell extends Connect4Cell {
       g.fillOval(x+1, y+1, width-2, height-2);
     }
   }
+  
+  
 }
