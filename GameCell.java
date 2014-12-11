@@ -10,10 +10,10 @@ public class GameCell extends JPanel {
   Chip content;
   
 /////////////constructor//////////////
-  public GameCell(int col, int row) {
+  public GameCell(int col, int row, int size) {
     this.col = col;
     this.row = row;
-    setPreferredSize (new Dimension(int size,size));
+    setPreferredSize (new Dimension(size,size));
     setBackground(Color.YELLOW);
   }
   
