@@ -36,7 +36,7 @@ public class GameCell extends JPanel {
     int height = getSize().height - 30;
     
     if (content == Chip.BLANK) {
-      g.setcolor(getBackground());
+      g.setColor(getBackground());
     }
     else if (content == Chip.RED) {
       g.setColor(Color.RED);
@@ -48,19 +48,20 @@ public class GameCell extends JPanel {
     }
     
     
-//    if (isEnabled()) {
-//      g.setColor(chipColor);
-//      g.fillOval(x, y, width, height);
-//    }
-//    
-//    else {
-//      g.setColor (Color.DARK_GRAY);
-//      g.fillOval(x, y, width, height);
-//      
-//      g.setColor (getBackground());
-//      g.fillOval(x+1, y+1, width-2, height-2);
-//    }
-//  }
+    if (isEnabled()) {
+      g.setColor(chipColor);
+      g.fillOval(x, y, width, height);
+    }
+    
+    else {
+      g.setColor (Color.DARK_GRAY);
+      g.fillOval(x, y, width, height);
+      
+      g.setColor (getBackground());
+      g.fillOval(x+1, y+1, width-2, height-2);
+    }
+  }
   
   
 }
+

@@ -30,11 +30,11 @@ class Connect4Board extends JPanel {
     // for (; filledCells<ROWS*COLUMNS; ++filledCells)
     //  add(new GameCell(CELL_SIZE));
     
-    GameCell[][] gameBoard;
+    GameCell[][] gameBoard = new GameCell[6][7];
     for (int boardRow = 0; boardRow<ROWS; boardRow++){
     	for (int boardCol = 0; boardCol<COLUMNS; boardCol++){
     		gameBoard[boardRow][boardCol] = new GameCell (boardRow, boardCol, CELL_SIZE);
-    		gameBoard[boardCol][boardRow] = new GameCell (boardCol, boardRow, CELL_SIZE);
+    		//gameBoard[boardCol][boardRow] = new GameCell (boardCol, boardRow, CELL_SIZE);
     	}
     }
     setEnabled(false);  
