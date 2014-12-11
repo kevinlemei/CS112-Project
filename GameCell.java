@@ -8,7 +8,7 @@ class GameCell extends Connect4Cell {
   public Color chipColor = Color.YELLOW;
   GameCell(int size) {
     super(size);
-    addMouseListener(new MouseAdapter() {
+    /*addMouseListener(new MouseAdapter() {
       public void mouseClicked(MouseEvent e){
         if (e.getClickCount()%2 != 0)
           chipColor = Color.RED;
@@ -16,7 +16,7 @@ class GameCell extends Connect4Cell {
           chipColor = Color.BLACK;
         repaint();
       }
-    });
+    });*/
   }
   
   class MyMouseListener extends MouseAdapter {

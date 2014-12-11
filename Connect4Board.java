@@ -1,6 +1,8 @@
 import javax.swing.*;
+
 import java.awt.*;
 import java.awt.event.*;
+
 import javax.swing.border.*;
 
 class Connect4Board extends JPanel {
@@ -16,12 +18,25 @@ class Connect4Board extends JPanel {
   Component theParent;
   GameCell gameCell;
   
+  class MyMouseListener extends MouseAdapter {
+	    
+  }
+  
   Connect4Board(Component f) {
     theParent = f;
     setLayout(new GridLayout(ROWS, COLUMNS, LINE_WIDTH, LINE_WIDTH));
     for (; filledCells<ROWS*COLUMNS; ++filledCells)
       add(new GameCell(CELL_SIZE));
     setEnabled(false);  
+    addMouseListener(new MouseAdapter() {
+        public void mouseClicked(MouseEvent e){
+          if (e.getClickCount()%2 != 0)
+            gameCell.chipColor = Color.RED;
+          else
+            gameCell.chipColor = Color.BLACK;
+          repaint();
+        }
+      });
   }
   
   public void setEnabled(boolean flag) {
