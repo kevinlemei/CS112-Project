@@ -25,11 +25,26 @@ class Connect4Board extends JPanel {
   Connect4Board(Component f) {
     theParent = f;
     setLayout(new GridLayout(ROWS, COLUMNS, LINE_WIDTH, LINE_WIDTH));
-    for (; filledCells<ROWS*COLUMNS; ++filledCells)
-      add(new GameCell(CELL_SIZE));
+   
+    ////old board code --- keeping for now
+    // for (; filledCells<ROWS*COLUMNS; ++filledCells)
+    //  add(new GameCell(CELL_SIZE));
+    
+    GameCell[][] gameBoard;
+    for (int boardRow = 0; boardRow<ROWS; boardRow++){
+    	for (int boardCol = 0; boardCol<COLUMNS; boardCol++){
+    		gameBoard[boardRow][boardCol] = new GameCell (boardRow, boardCol, CELL_SIZE);
+    		gameBoard[boardCol][boardRow] = new GameCell (boardCol, boardRow, CELL_SIZE);
+    	}
+    }
     setEnabled(false);  
     addMouseListener(new MouseAdapter() {
         public void mouseClicked(MouseEvent e){
+          int clickX = e.getX();
+          int clickY = e.getY();
+          // Get the row and column clicked
+          int clickRow = clickY / CELL_SIZE;
+          int clickCol = clickX / CELL_SIZE;
           if (e.getClickCount()%2 != 0)
             gameCell.chipColor = Color.RED;
           else
