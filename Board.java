@@ -3,7 +3,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.border.*;
 
-class Connect4Board extends JPanel {
+class Board extends JPanel {
   
   final static int LINE_WIDTH = 3;
   final static int ROWS = 6;

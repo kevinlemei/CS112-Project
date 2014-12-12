@@ -5,7 +5,7 @@ import javax.swing.border.*;
 
 class Connect4Panel extends JPanel implements ActionListener {
 
- Connect4Board gameBoard;
+ Board gameBoard;
  JButton powerButton;
 
  Connect4Panel() {
