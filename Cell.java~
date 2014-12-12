@@ -3,14 +3,14 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.border.*;
 
-public class GameCell extends JPanel {
+public class Cell extends JPanel {
   
   public Color chipColor = Color.YELLOW;
   public int col, row;
   Chip content = Chip.BLANK;
   
 /////////////constructor//////////////
-  public GameCell(int col, int row) {
+  public Cell(int col, int row) {
     this.col = col;
     this.row = row;
     setPreferredSize(new Dimension(100, 100));

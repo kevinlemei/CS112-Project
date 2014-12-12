@@ -3,18 +3,16 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.border.*;
 
-public class GameCell extends JPanel {
+public class Cell extends JPanel {
   
-  public Color chipColor = Color.YELLOW;
-  public int col, row;
+  private int col, row;
   Chip content = Chip.BLANK;
   
 /////////////constructor//////////////
-  public GameCell(int col, int row) {
-    this.col = col;
+  public Cell(int row, int col) {
     this.row = row;
+    this.col = col;
     setPreferredSize(new Dimension(100, 100));
-    setBackground(Color.YELLOW);
   }
   
 ///////a class function to clear the cell///////
@@ -25,27 +23,29 @@ public class GameCell extends JPanel {
 /////////the graphics of the cell//////
   public void paintComponent(Graphics g) {
     super.paintComponent(g);
+    
     int x = 20;
     int y = 20;
-    int width = getSize().width - 30;
-    int height = getSize().height - 30;
+    int width = getSize().width - 20;
+    int height = getSize().height - 20;
     
-    setLayout(new GridLayout(1,1,1,1));
     
-      
-      if (content == Chip.BLANK) {
-        g.setColor(getBackground());
-      }
-      else if (content == Chip.RED) {
-        g.setColor(Color.RED);
-        g.fillOval(x, y, width, height);
-      }
-      else if (content == Chip.BLACK) {
-        g.setColor(Color.BLACK);
-        g.fillOval(x, y, width, height);
-      }
-      
+    setBackground(Color.YELLOW);
+//    setLayout (new BoxLayout(this, BoxLayout.X_AXIS));
+//    setBorder (new EmptyBorder(10,10,10,10));
     
+    if (content == Chip.BLANK) {
+      g.setColor(Color.WHITE);
+      g.fillOval(x, y, width, height);
+    }
+    else if (content == Chip.RED) {
+      g.setColor(Color.RED);
+      g.fillOval(x, y, width, height);
+    }
+    else if (content == Chip.BLACK) {
+      g.setColor(Color.BLACK);
+      g.fillOval(x, y, width, height);
+    }     
   }
   
 //    
