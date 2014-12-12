@@ -1,20 +1,35 @@
 import javax.swing.*;
+
 import java.awt.*;
 import java.awt.event.*;
+
 import javax.swing.border.*;
 
 public class GameCell extends JPanel {
   
   public Color chipColor = Color.YELLOW;
-  public int col, row;
+ // public int col, row;
   Chip content = Chip.BLANK;
+  int clickCount = 0;
   
 /////////////constructor//////////////
-  public GameCell(int col, int row) {
-    this.col = col;
-    this.row = row;
-    setPreferredSize(new Dimension(100, 100));
+ // public GameCell(int col, int row) {
+  public GameCell (int size){
+  //  this.col = col;
+   // this.row = row;
+	
+    setPreferredSize(new Dimension(size, size));
     setBackground(Color.YELLOW);
+    addMouseListener(new MouseAdapter(){
+		public void mouseClicked(MouseEvent e){
+			clickCount++;
+			if (clickCount%2!=0)
+				content = Chip.RED;
+			else
+				content = Chip.BLACK;
+			repaint();
+		}
+	});
   }
   
 ///////a class function to clear the cell///////
