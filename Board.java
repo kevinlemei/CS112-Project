@@ -25,31 +25,35 @@ class Board extends JPanel {
         add(board[i][j]);
       }
     }
+    
+    
     addMouseListener(new MouseAdapter(){
-		public void mouseClicked(MouseEvent e){
-			++clickCount;
-			int clickX = e.getX();
-            int clickY = e.getY();
-            
-            // Get the row and column clicked
-         //   int rowSelected = clickY / 113;
-            int colSelected = clickX / 113;
-            int rowSelected = 5;
-            if (colSelected<COLUMNS){
-            	while (rowSelected>-1 && 
-            			board[rowSelected][colSelected].content!=Chip.BLANK){
-            		rowSelected--;		
-            	}
-            }
-            if (rowSelected>-1){
-            	if (clickCount%2!=0)
-            		board[rowSelected][colSelected].content = Chip.RED;
-            	else
-            		board[rowSelected][colSelected].content = Chip.BLACK;
-            }
-			repaint();
-		}
-	}); 
+      public void mouseClicked(MouseEvent e){
+        ++clickCount;
+        int clickX = e.getX();
+        int clickY = e.getY();
+        
+        // Get the row and column clicked
+        //   int rowSelected = clickY / 113;
+        int colSelected = clickX / 113;
+        int rowSelected = 5;
+        if (colSelected<COLUMNS){
+          while (rowSelected>-1 && 
+                 board[rowSelected][colSelected].content!=Chip.BLANK){
+            rowSelected--;  
+          }
+        }
+        if (rowSelected>-1){
+          if (clickCount%2!=0)
+            board[rowSelected][colSelected].content = Chip.RED;
+          else
+            board[rowSelected][colSelected].content = Chip.BLACK;
+        }
+        repaint();
+      }
+    });
+    
+    setEnabled(false);
   }
   
   public void border() {
@@ -58,51 +62,17 @@ class Board extends JPanel {
     setBorder(border);
     repaint();
   }
+  
+  public void setEnabled(boolean flag) {
+    super.setEnabled(flag);
+    for (Component c : getComponents()) 
+       c.setEnabled(flag);
+    for (int i=0; i<ROWS; i++) {
+      for (int j=0; j<COLUMNS; j++) {
+        board[i][j].content = Chip.BLANK;
+      }
+    }
+    
+    repaint();
+  }
 }
-//
-////    for (int i = 0; i < ROWS; ++i) {
-////     for (int j = 0; j < COLUMNS; ++j) {
-////       add (cell = new Cell(i, j));
-//    
-//    //gameBoard[boardCol][boardRow] = new GameCell (boardCol, boardRow, CELL_SIZE);
-//    // }
-//    //   }
-//    
-////    setEnabled(false);  
-//    
-//    addMouseListener(new MouseAdapter() {
-//      public void mouseClicked(MouseEvent e){
-//        int clickX = e.getX();
-//        int clickY = e.getY();
-//        // Get the row and column clicked
-//        int clickRow = clickY / CELL_SIZE;
-//        int clickCol = clickX / CELL_SIZE;
-////          if (e.getClickCount()%2 != 0)
-////            cell.chipColor = Color.RED;
-////          else
-////            cell.chipColor = Color.BLACK;
-//        repaint();
-//      }
-//    });
-//  //}
-//  
-//  class MyMouseListener extends MouseAdapter {
-//    
-//  }
-//  
-//  
-////  public void setEnabled(boolean flag) {
-////    
-////    super.setEnabled(flag);
-////    
-////    for (Component c : getComponents()) 
-////      c.setEnabled(flag);
-////    
-////    border = new LineBorder(flag ? Color.GRAY : Color.WHITE, LINE_WIDTH);
-////    setBorder(border);
-////    setBackground(flag ? Color.BLUE : Color.WHITE);
-////    
-////    repaint();
-////  }
-//  
-//}
