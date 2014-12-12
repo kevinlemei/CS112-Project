@@ -38,8 +38,7 @@ class Connect4Board extends JPanel {
 		for (Component c : getComponents()) 
 			c.setEnabled(flag);
 		
-		for (Component comp:getComponents())
-			System.out.println(comp.getAlignmentY());
+		
 
 		border = new LineBorder(flag ? Color.GRAY : Color.WHITE, LINE_WIDTH);
 		setBorder(border);
