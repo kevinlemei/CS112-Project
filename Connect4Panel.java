@@ -11,7 +11,7 @@ class Connect4Panel extends JPanel implements ActionListener {
  Connect4Panel() {
 
   super(new FlowLayout(FlowLayout.CENTER, 100, 100));
-  gameBoard = new Connect4Board();
+  gameBoard = new Board();
   powerButton = new JButton("New Game");
   add(gameBoard);
   add(powerButton);
