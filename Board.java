@@ -19,10 +19,10 @@ class Board extends JPanel {
     Border border = new LineBorder(Color.BLUE, LINE_WIDTH);
     setBorder(border);
     
-///////////creates a matrix of Cells and initilizes each Cell///////
+///////////creates a matrix of Cells and initializes each Cell///////
     for (int i=0; i<ROWS; i++) {
       for (int j=0; j<COLUMNS; j++) {
-        board[i][j] = new Cell(i,j);
+        board[i][j] = new Cell();
         add(board[i][j]);
       }
     }
@@ -190,7 +190,7 @@ class Board extends JPanel {
       c.setEnabled(flag);
     for (int i=0; i<ROWS; i++) {
       for (int j=0; j<COLUMNS; j++) {
-        board[i][j].content = Chip.BLANK;
+        board[i][j].clear();
       }
     }
     repaint();

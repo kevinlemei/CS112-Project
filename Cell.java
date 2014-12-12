@@ -5,13 +5,10 @@ import javax.swing.border.*;
 
 public class Cell extends JPanel {
   
-  private int col, row;
   Chip content = Chip.BLANK;
   
 /////////////constructor//////////////
-  public Cell(int row, int col) {
-    this.row = row;
-    this.col = col;
+  public Cell() {
     setPreferredSize(new Dimension(70, 70));
   }
   
@@ -31,8 +28,6 @@ public class Cell extends JPanel {
     
     
     setBackground(Color.YELLOW);
-//    setLayout (new BoxLayout(this, BoxLayout.X_AXIS));
-//    setBorder (new EmptyBorder(10,10,10,10));
     
     if (content == Chip.BLANK) {
       g.setColor(Color.WHITE);
@@ -47,19 +42,5 @@ public class Cell extends JPanel {
       g.fillOval(x, y, width, height);
     }     
   }
-  
-//    
-//    if (isEnabled()) {
-//      g.setColor(chipColor);
-//      g.fillOval(x, y, width, height);
-//    }
-//    
-//    else {
-//      g.setColor (Color.DARK_GRAY);
-//      g.fillOval(x, y, width, height);
-//      
-//      g.setColor (getBackground());
-//      g.fillOval(x+1, y+1, width-2, height-2);
-//    }
 }
 
