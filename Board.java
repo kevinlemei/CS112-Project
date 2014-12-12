@@ -30,7 +30,6 @@ class Board extends JPanel {
 /////////clicking on the board results in an ActionEvent//////////
     addMouseListener(new MouseAdapter(){
       public void mouseClicked(MouseEvent e){
-        clickCount++;
         int clickX = e.getX();
         
         
@@ -51,11 +50,13 @@ class Board extends JPanel {
         //also updates the TurnTracker
         if (rowSelected > -1) {
           if (clickCount % 2 != 0) {
-            board[rowSelected][colSelected].content = Chip.RED;
+            clickCount++;
+        	board[rowSelected][colSelected].content = Chip.RED;
             TurnTracker.currentTurn.setText("Black's turn");
             TurnTracker.currentTurn.setForeground(Color.BLACK); 
           }
           else {
+            clickCount++;
             board[rowSelected][colSelected].content = Chip.BLACK;
             TurnTracker.currentTurn.setText("Red's turn");
             TurnTracker.currentTurn.setForeground(Color.RED);

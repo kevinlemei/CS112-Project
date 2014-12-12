@@ -16,9 +16,5 @@ class TurnTracker extends JLabel {
     currentTurn.setFont(new Font("SANS_SERIF", Font.BOLD, 24));
     currentTurn.setForeground(Color.RED);
     add(currentTurn);
-
-    
   }
-  
-  
 }
