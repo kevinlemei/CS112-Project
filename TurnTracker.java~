@@ -1,0 +1,29 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.border.*;
+
+int clickCount = 0;
+String playerTurn = "yoasdfk";
+
+class TurnTracker extends JPanel {
+  
+  TurnTracker() {
+    
+    addMouseListener(new MouseAdapter() {
+      public void mouseClicked(MouseEvent e) {
+        ++clickCount;
+        
+        if (clickCount%2!=0) {
+          playerTurn = "Red's turn";
+        }
+        else {
+          playerTurn = "Black's turn";
+        }
+      }
+    });  
+    
+  }
+  
+  
+}

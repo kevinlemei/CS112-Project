@@ -1,8 +1,6 @@
 import javax.swing.*;
-
 import java.awt.*;
 import java.awt.event.*;
-
 import javax.swing.border.*;
 
 class Board extends JPanel {
@@ -42,19 +40,27 @@ class Board extends JPanel {
           }
         }
         if (rowSelected>-1){
-          if (clickCount%2!=0)
+          if (clickCount%2!=0) {
             board[rowSelected][colSelected].content = Chip.RED;
-          else
+            TurnTracker.currentTurn.setText("Black's turn");
+            TurnTracker.currentTurn.setForeground(Color.BLACK);
+            
+          }
+          else {
             board[rowSelected][colSelected].content = Chip.BLACK;
+            TurnTracker.currentTurn.setText("Red's turn");
+            TurnTracker.currentTurn.setForeground(Color.RED);
+          }
+          TurnTracker.currentTurn.updateUI();
         }
         repaint();
         if (win(Chip.RED)){
-        	if (winDialog("Red"))
-        		setEnabled(true);
+         if (winDialog("Red"))
+          setEnabled(true);
         }
         if (win(Chip.BLACK)){
-        	if (winDialog("Black"))
-        		setEnabled(true);
+         if (winDialog("Black"))
+          setEnabled(true);
         }
       }
     });
@@ -109,8 +115,8 @@ class Board extends JPanel {
             count++;
             if (count == 4) return true;
           }
-          else count = 0;
         }
+        count = 0;
       }
     }
     
@@ -126,17 +132,17 @@ class Board extends JPanel {
   }
   
   public boolean winDialog(String s){
-	  String s1 = "Yay! Keep playing!";
-	  String s2 = "Awesome. I'm done.";
-	  Object[] options = {s1, s2};
-	  int n = JOptionPane.showOptionDialog(null, s +" won!", "Winner", 
-			  JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE, 
-			  null, options, s1);
-	  if (n==JOptionPane.YES_OPTION){
-		  return true;
-	  }else{
-		  return false;
-	  }
+   String s1 = "Yay! Keep playing!";
+   String s2 = "Awesome. I'm done.";
+   Object[] options = {s1, s2};
+   int n = JOptionPane.showOptionDialog(null, s +" won!", "Winner", 
+     JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE, 
+     null, options, s1);
+   if (n==JOptionPane.YES_OPTION){
+    return true;
+   }else{
+    return false;
+   }
   }
   
   public void setEnabled(boolean flag) {
