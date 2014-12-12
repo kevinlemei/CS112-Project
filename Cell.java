@@ -12,7 +12,7 @@ public class Cell extends JPanel {
   public Cell(int row, int col) {
     this.row = row;
     this.col = col;
-    setPreferredSize(new Dimension(100, 100));
+    setPreferredSize(new Dimension(70, 70));
   }
   
 ///////a class function to clear the cell///////
