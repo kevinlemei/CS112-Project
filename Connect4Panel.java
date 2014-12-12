@@ -25,7 +25,6 @@ class Connect4Panel extends JPanel implements ActionListener {
     credits.setForeground(Color.WHITE);
     credits.setAlignmentX(0.5f);
     gameBoard = new Board();
-    gameBoard.border();
     newButton = new JButton("New Game");
     turn = new TurnTracker();
     
