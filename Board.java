@@ -1,6 +1,8 @@
 import javax.swing.*;
+
 import java.awt.*;
 import java.awt.event.*;
+
 import javax.swing.border.*;
 
 class Board extends JPanel {
@@ -11,6 +13,7 @@ class Board extends JPanel {
   final static int CELL_SIZE = 100;
   
   Cell[][] board = new Cell[ROWS][COLUMNS];
+  int clickCount = 0;
   
   Board() {
     
@@ -22,6 +25,24 @@ class Board extends JPanel {
         add(board[i][j]);
       }
     }
+    addMouseListener(new MouseAdapter(){
+		public void mouseClicked(MouseEvent e){
+			++clickCount;
+			int clickX = e.getX();
+            int clickY = e.getY();
+            
+            // Get the row and column clicked
+            int rowSelected = clickY / 113;
+            int colSelected = clickX / 113;
+            if (rowSelected<ROWS && colSelected<COLUMNS){
+            	if (clickCount%2!=0)
+            		board[rowSelected][colSelected].content = Chip.RED;
+            	else
+            		board[rowSelected][colSelected].content = Chip.BLACK;
+            }
+			repaint();
+		}
+	}); 
   }
   
   public void border() {

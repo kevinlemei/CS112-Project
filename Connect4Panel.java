@@ -11,6 +11,7 @@ class Connect4Panel extends JPanel implements ActionListener {
  Connect4Panel() {
 
   super(new FlowLayout(FlowLayout.CENTER, 100, 100));
+  setBackground(new Color(172,209,233));
   gameBoard = new Board();
   setBackground(new Color(172, 209, 233));
   gameBoard.border();
