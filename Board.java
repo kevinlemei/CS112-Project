@@ -26,7 +26,6 @@ class Board extends JPanel {
       }
     }
     
-    
     addMouseListener(new MouseAdapter(){
       public void mouseClicked(MouseEvent e){
         ++clickCount;
@@ -49,10 +48,67 @@ class Board extends JPanel {
             board[rowSelected][colSelected].content = Chip.BLACK;
         }
         repaint();
+        if (win(Chip.RED) || win(Chip.BLACK)) System.out.println("winner!!");
       }
     });
     
     setEnabled(false);
+  }
+  
+  public boolean win(Chip player) {
+    
+    int count = 0;
+    
+    /////////checks every horizontal 4-in-a-row for each row/////////
+    for (int row = 0; row<ROWS; row++) {
+      for (int col = 0; col<COLUMNS; col++) {
+        if (board[row][col].content == player) {
+          count++;
+          if (count == 4) return true;
+        }
+        else count = 0;
+      }
+    }
+    
+    /////////checks every vertical 4-in-a-row for each column////////
+    for (int col = 0; col<COLUMNS; col++) {
+      for (int row = 0; row<ROWS; row++) {
+        if (board[row][col].content == player) {
+          count++;
+          if (count == 4) return true;
+        }
+        else count = 0;
+      }
+    }
+    
+    ////////checks every diagonal 4-in-a-row/////////
+    for (int row = 3; row<6; row++) {
+      for (int col = 0; col<4; col++) {
+        for (int i=0; i<4; i++) {
+          if (board[row-i][col+i].content == player) {
+            count++;
+            if (count == 4) return true;
+          }
+        }
+        count = 0;
+      }
+    }
+    
+    ///////checks diagonal in other direction//////
+    for (int row = 0; row<3; row++) {
+      for (int col = 0; col<4; col++) {
+        for(int i=0; i<4; i++) {
+          if (board[row+i][col+i].content == player) {
+            count++;
+            if (count == 4) return true;
+          }
+          else count = 0;
+        }
+      }
+    }
+    
+    return false;
+    
   }
   
   public void border() {
@@ -65,7 +121,7 @@ class Board extends JPanel {
   public void setEnabled(boolean flag) {
     super.setEnabled(flag);
     for (Component c : getComponents()) 
-       c.setEnabled(flag);
+      c.setEnabled(flag);
     for (int i=0; i<ROWS; i++) {
       for (int j=0; j<COLUMNS; j++) {
         board[i][j].content = Chip.BLANK;

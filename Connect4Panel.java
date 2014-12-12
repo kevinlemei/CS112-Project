@@ -22,7 +22,7 @@ class Connect4Panel extends JPanel implements ActionListener {
     credits = new JLabel("created by Deborah Bakshiyev and Kevin Mei");
     credits.setFont(new Font("MONOSPACED", Font.PLAIN, 24));
     credits.setForeground(Color.WHITE);
-    credits.setAlignmentX(0.8f);
+    credits.setAlignmentX(0.5f);
     
     gameBoard = new Board();
     gameBoard.border();
