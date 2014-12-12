@@ -32,9 +32,16 @@ class Board extends JPanel {
             int clickY = e.getY();
             
             // Get the row and column clicked
-            int rowSelected = clickY / 113;
+         //   int rowSelected = clickY / 113;
             int colSelected = clickX / 113;
-            if (rowSelected<ROWS && colSelected<COLUMNS){
+            int rowSelected = 5;
+            if (colSelected<COLUMNS){
+            	while (rowSelected>-1 && 
+            			board[rowSelected][colSelected].content!=Chip.BLANK){
+            		rowSelected--;		
+            	}
+            }
+            if (rowSelected>-1){
             	if (clickCount%2!=0)
             		board[rowSelected][colSelected].content = Chip.RED;
             	else
