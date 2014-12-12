@@ -24,8 +24,8 @@ public class Cell extends JPanel {
   public void paintComponent(Graphics g) {
     super.paintComponent(g);
     
-    int x = 20;
-    int y = 20;
+    int x = 10;
+    int y = 10;
     int width = getSize().width - 20;
     int height = getSize().height - 20;
     
