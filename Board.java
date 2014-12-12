@@ -5,7 +5,7 @@ import javax.swing.border.*;
 
 class Board extends JPanel {
   
-  final static int LINE_WIDTH = 3;
+  final static int LINE_WIDTH = 15;
   final static int ROWS = 6;
   final static int COLUMNS = 7;
   final static int CELL_SIZE = 100;
@@ -22,6 +22,13 @@ class Board extends JPanel {
         add(board[i][j]);
       }
     }
+  }
+  
+  public void border() {
+    setBackground(Color.BLUE);
+    Border border = new LineBorder(Color.BLUE, LINE_WIDTH);
+    setBorder(border);
+    repaint();
   }
 }
 //
