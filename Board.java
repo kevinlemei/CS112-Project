@@ -28,7 +28,7 @@ class Board extends JPanel {
       public void mouseClicked(MouseEvent e){
         ++clickCount;
         int clickX = e.getX();
-        int clickY = e.getY();
+        //int clickY = e.getY();
         
         // Get the row and column clicked
         int colSelected = clickX / 80;
@@ -36,10 +36,10 @@ class Board extends JPanel {
         if (colSelected<COLUMNS){
           while (rowSelected>-1 && 
                  board[rowSelected][colSelected].content!=Chip.BLANK){
-            rowSelected--;  
+            rowSelected--;
           }
         }
-        if (rowSelected>-1){
+        if (rowSelected>-1) {
           if (clickCount%2!=0) {
             board[rowSelected][colSelected].content = Chip.RED;
             TurnTracker.currentTurn.setText("Black's turn");
@@ -55,24 +55,43 @@ class Board extends JPanel {
         }
         repaint();
         if (win(Chip.RED)){
-         if (winDialog("Red"))
-          setEnabled(true);
+        	if (winDialog("Red"))
+        		setEnabled(true);
         }
         if (win(Chip.BLACK)){
-         if (winDialog("Black"))
-          setEnabled(true);
+        	if (winDialog("Black"))
+        		setEnabled(true);
+        }
+        if (isDraw()){
+        	if (drawDialog())
+        		setEnabled(true);	
         }
       }
     });
     
     setEnabled(false);
   }
-  
+  public boolean isDraw(){
+	  int count=0;
+	  for (int i=0; i<ROWS; i++){
+		  for (int j=0; j<COLUMNS; j++){
+			  if (board[i][j].content==Chip.BLANK)
+				  ++count;
+		  }
+	  }
+	  if (count!=0) return false;
+	  else return true;
+	  
+  }
   public boolean win(Chip player) {
     
-    int count = 0;
+    
     
     /////////checks every horizontal 4-in-a-row for each row/////////
+	  
+	  
+	int count = 0;
+	  
     for (int row = 0; row<ROWS; row++) {
       for (int col = 0; col<COLUMNS; col++) {
         if (board[row][col].content == player) {
@@ -83,7 +102,12 @@ class Board extends JPanel {
       }
     }
     
+    
+    
     /////////checks every vertical 4-in-a-row for each column////////
+    
+    count = 0;
+    
     for (int col = 0; col<COLUMNS; col++) {
       for (int row = 0; row<ROWS; row++) {
         if (board[row][col].content == player) {
@@ -94,7 +118,12 @@ class Board extends JPanel {
       }
     }
     
+    
+    
     ////////checks every diagonal 4-in-a-row/////////
+    
+    count = 0;
+    
     for (int row = 3; row<6; row++) {
       for (int col = 0; col<4; col++) {
         for (int i=0; i<4; i++) {
@@ -108,6 +137,9 @@ class Board extends JPanel {
     }
     
     ///////checks diagonal in other direction//////
+    
+    count = 0;
+    
     for (int row = 0; row<3; row++) {
       for (int col = 0; col<4; col++) {
         for(int i=0; i<4; i++) {
@@ -121,7 +153,7 @@ class Board extends JPanel {
     }
     
     return false;
-    
+
   }
   
   public void border() {
@@ -130,12 +162,24 @@ class Board extends JPanel {
     setBorder(border);
     repaint();
   }
-  
+  public boolean drawDialog(){
+	String s1 = "Yes";
+	String s2 = "No";
+	Object[] options = {s1, s2};
+	int n = JOptionPane.showOptionDialog(null, "It's a draw. Start over?", "Draw", 
+			JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE, 
+	        null, options, s1);
+	if (n==JOptionPane.YES_OPTION){
+	return true;
+	}else{
+	return false;
+	} 
+  }
   public boolean winDialog(String s){
-   String s1 = "Yay! Keep playing!";
-   String s2 = "Awesome. I'm done.";
+   String s1 = "Yes";
+   String s2 = "No";
    Object[] options = {s1, s2};
-   int n = JOptionPane.showOptionDialog(null, s +" won!", "Winner", 
+   int n = JOptionPane.showOptionDialog(null,s +" won! Start over?", "Winner", 
      JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE, 
      null, options, s1);
    if (n==JOptionPane.YES_OPTION){
