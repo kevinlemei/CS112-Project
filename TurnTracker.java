@@ -12,9 +12,9 @@ class TurnTracker extends JLabel {
     setLayout(new FlowLayout());
     setPreferredSize (new Dimension(200,50));
     
-    currentTurn = new JLabel("Red's turn");
+    currentTurn = new JLabel("Black's turn");
     currentTurn.setFont(new Font("SANS_SERIF", Font.BOLD, 24));
-    currentTurn.setForeground(Color.RED);
+    currentTurn.setForeground(Color.BLACK);
     add(currentTurn);
   }
 }
