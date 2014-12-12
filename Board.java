@@ -7,10 +7,10 @@ import javax.swing.border.*;
 
 class Board extends JPanel {
   
-  final static int LINE_WIDTH = 15;
+  final static int LINE_WIDTH = 9;
   final static int ROWS = 6;
   final static int COLUMNS = 7;
-  final static int CELL_SIZE = 100;
+  final static int CELL_SIZE = 70;
   
   Cell[][] board = new Cell[ROWS][COLUMNS];
   int clickCount = 0;
@@ -34,8 +34,7 @@ class Board extends JPanel {
         int clickY = e.getY();
         
         // Get the row and column clicked
-        //   int rowSelected = clickY / 113;
-        int colSelected = clickX / 113;
+        int colSelected = clickX / 80;
         int rowSelected = 5;
         if (colSelected<COLUMNS){
           while (rowSelected>-1 && 
