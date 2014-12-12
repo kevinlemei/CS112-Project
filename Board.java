@@ -48,7 +48,14 @@ class Board extends JPanel {
             board[rowSelected][colSelected].content = Chip.BLACK;
         }
         repaint();
-        if (win(Chip.RED) || win(Chip.BLACK)) System.out.println("winner!!");
+        if (win(Chip.RED)){
+        	if (winDialog("Red"))
+        		setEnabled(true);
+        }
+        if (win(Chip.BLACK)){
+        	if (winDialog("Black"))
+        		setEnabled(true);
+        }
       }
     });
     
@@ -116,6 +123,20 @@ class Board extends JPanel {
     Border border = new LineBorder(Color.BLUE, LINE_WIDTH);
     setBorder(border);
     repaint();
+  }
+  
+  public boolean winDialog(String s){
+	  String s1 = "Yay! Keep playing!";
+	  String s2 = "Awesome. I'm done.";
+	  Object[] options = {s1, s2};
+	  int n = JOptionPane.showOptionDialog(null, s +" won!", "Winner", 
+			  JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE, 
+			  null, options, s1);
+	  if (n==JOptionPane.YES_OPTION){
+		  return true;
+	  }else{
+		  return false;
+	  }
   }
   
   public void setEnabled(boolean flag) {
