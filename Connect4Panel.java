@@ -1,7 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import javax.swing.border.*;
 
 class Connect4Panel extends JPanel implements ActionListener {
   
@@ -13,7 +12,7 @@ class Connect4Panel extends JPanel implements ActionListener {
   
   Connect4Panel() {
     
-    super(new FlowLayout(FlowLayout.CENTER, 1000, 25));
+    super(new FlowLayout(FlowLayout.CENTER, 1000, 15));
     setBackground(new Color(172,209,233));
     this.setPreferredSize(new Dimension(1000,1000));
     
