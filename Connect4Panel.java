@@ -13,9 +13,9 @@ class Connect4Panel extends JPanel implements ActionListener {
   
   Connect4Panel() {
     
-    super(new FlowLayout(FlowLayout.CENTER, 50, 50));
+    super(new FlowLayout(FlowLayout.CENTER, 1000, 25));
     setBackground(new Color(172,209,233));
-      this.setPreferredSize(new Dimension(1000,1000));
+    this.setPreferredSize(new Dimension(1000,1000));
     
     title = new JLabel("CONNECT FOUR");
     title.setFont(new Font("SANS_SERIF", Font.BOLD, 72));
@@ -32,8 +32,8 @@ class Connect4Panel extends JPanel implements ActionListener {
     add(title);
     add(credits);
     add(gameBoard);
-    add(newButton);
     add(turn);
+    add(newButton);
     
     newButton.addActionListener(this);
     
