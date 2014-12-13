@@ -42,8 +42,7 @@ class Connect4Panel extends JPanel implements ActionListener {
     
     if (e.getSource().equals(newButton)) {
       gameBoard.setEnabled(!gameBoard.isEnabled());
-    }
-    
+    }  
   }
   
 }

@@ -31,9 +31,7 @@ class Board extends JPanel {
     addMouseListener(new MouseAdapter(){
       public void mouseClicked(MouseEvent e){
         int clickX = e.getX();
-        
-        
-        // get the column clicked
+        //find the column clicked
         int colSelected = clickX / 80;
         //we start at the bottom row
         int rowSelected = 5;
